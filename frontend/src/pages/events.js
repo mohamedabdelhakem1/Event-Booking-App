@@ -55,7 +55,7 @@ class EventsPage extends Component {
             }
         }
         const token = this.context.token
-        fetch('http://localhost:8888/graphql', {
+        fetch(((process.env.NODE_ENV === 'production') ? process.env.APP_URL:'http://localhost:8888/graphql'), {
             method: 'POST',
             body: JSON.stringify(requestBody),
             headers: {
@@ -110,7 +110,7 @@ class EventsPage extends Component {
             }
         }
         const token = this.context.token;
-        fetch('http://localhost:8888/graphql', {
+        fetch(((process.env.NODE_ENV === 'production') ? process.env.APP_URL:'http://localhost:8888/graphql'), {
             method: 'POST',
             body: JSON.stringify(requestBody),
             headers: {
@@ -167,7 +167,7 @@ class EventsPage extends Component {
             }
           `
         }
-        fetch('http://localhost:8888/graphql', {
+        fetch(((process.env.NODE_ENV === 'production') ? process.env.APP_URL:'http://localhost:8888/graphql'), {
             method: 'POST',
             body: JSON.stringify(requestBody),
             headers: {
