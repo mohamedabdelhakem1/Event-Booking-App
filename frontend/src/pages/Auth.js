@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './Auth.css';
 import AuthContext from '../context/auth-context';
-
+const API_URI = ((process.env.NODE_ENV === 'production') ? 
+"https://graphql-event-booking-app.herokuapp.com/graphql":
+'http://localhost:8888/graphql');
 class AuthPage extends Component {
     state = {
         isLogin: true
@@ -14,6 +16,7 @@ class AuthPage extends Component {
         this.emailEl = React.createRef();
         this.passwordEl = React.createRef();
     }
+
     switchModeHandler = () => {
         this.setState(prevState => {
             return { isLogin: !prevState.isLogin };
@@ -61,7 +64,7 @@ class AuthPage extends Component {
             }
         }
         
-        fetch(((process.env.NODE_ENV === 'production') ? process.env.APP_URL:'http://localhost:8888/graphql'), {
+        fetch(API_URI, {
             method: 'POST',
             body: JSON.stringify(requestBody),
             headers: {

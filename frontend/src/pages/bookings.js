@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import AuthContext from '../context/auth-context';
 import Spinner from '../components/spinner/spinner'
 import BookingList from '../components/bookings/bookingsList'
+const API_URI = ((process.env.NODE_ENV === 'production') ? 
+"https://graphql-event-booking-app.herokuapp.com/graphql":
+'http://localhost:8888/graphql');
 class BookingsPage extends Component {
     static contextType = AuthContext
     state = {
@@ -29,7 +32,7 @@ class BookingsPage extends Component {
           `
         }
 
-        fetch(((process.env.NODE_ENV === 'production') ? process.env.APP_URL:'http://localhost:8888/graphql'), {
+        fetch(API_URI, {
             method: 'POST',
             body: JSON.stringify(requestBody),
             headers: {
@@ -67,7 +70,7 @@ class BookingsPage extends Component {
           }
         };
 
-        fetch(((process.env.NODE_ENV === 'production') ? process.env.APP_URL:'http://localhost:8888/graphql'), {
+        fetch(API_URI, {
             method: 'POST',
             body: JSON.stringify(requestBody),
             headers: {

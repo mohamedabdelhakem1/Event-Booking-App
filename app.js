@@ -7,7 +7,6 @@ const graphQlResolvers = require('./graphql/resolvers/index');
 const isAuth = require('./middleware/is-auth')
 const path = require('path')
 const app = express()
- 
 const port = process.env.PORT || 8888
 
 

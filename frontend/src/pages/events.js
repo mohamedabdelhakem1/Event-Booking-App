@@ -5,7 +5,9 @@ import Backdrop from '../components/Backdrop/Backdrop'
 import AuthContext from '../context/auth-context'
 import EventList from '../components/events/eventList/eventList'
 import Spinner from '../components/spinner/spinner'
-
+const API_URI = ((process.env.NODE_ENV === 'production') ? 
+"https://graphql-event-booking-app.herokuapp.com/graphql":
+'http://localhost:8888/graphql');
 class EventsPage extends Component {
     constructor(props) {
         super(props);
@@ -55,7 +57,7 @@ class EventsPage extends Component {
             }
         }
         const token = this.context.token
-        fetch(((process.env.NODE_ENV === 'production') ? process.env.APP_URL:'http://localhost:8888/graphql'), {
+        fetch(API_URI, {
             method: 'POST',
             body: JSON.stringify(requestBody),
             headers: {
@@ -110,7 +112,7 @@ class EventsPage extends Component {
             }
         }
         const token = this.context.token;
-        fetch(((process.env.NODE_ENV === 'production') ? process.env.APP_URL:'http://localhost:8888/graphql'), {
+        fetch(API_URI, {
             method: 'POST',
             body: JSON.stringify(requestBody),
             headers: {
@@ -167,7 +169,7 @@ class EventsPage extends Component {
             }
           `
         }
-        fetch(((process.env.NODE_ENV === 'production') ? process.env.APP_URL:'http://localhost:8888/graphql'), {
+        fetch(API_URI, {
             method: 'POST',
             body: JSON.stringify(requestBody),
             headers: {
